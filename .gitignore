@@ -1,4 +1,4 @@
 node_modules/
 .idea/
-db/
+db/db.json
 settings.json

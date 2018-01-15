@@ -1,0 +1,13 @@
+{
+  "title": "Playlist Title",
+  "playlistId": "spotify-playlist-id",
+  "callback": "http://my.server/callback",
+  "port": 3000,
+  "scopeUser": "user-read-private",
+  "scopeAdmin": "user-read-private playlist-modify-public",
+  "clientId": "spotify-client-id",
+  "clientSecret": "spotify-client-secret",
+  "ownerId": "your-spotify-user-id",
+  "stateUser": "String to be hashed for Spotify callback state.",
+  "stateAdmin": "String to be hashed for Spotify callback admin-state."
+}

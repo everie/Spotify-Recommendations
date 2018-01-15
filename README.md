@@ -1,4 +1,4 @@
-# Spotiy-Recommendations
+# Spotify Recommendations
 A small program to manage recommendations for spotify playlists.
 
 # Why?
