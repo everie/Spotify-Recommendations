@@ -1,0 +1,143 @@
+:root {
+    --coverHeight:80px;
+    --innerRightWidth:120px;
+}
+
+.recRow {
+    width:100%;
+    display:table-row;
+}
+
+.recHeaderRow {
+    width:100%;
+    display:table-row;
+    font-weight:bold;
+}
+
+.coverImage {
+    width:var(--coverHeight);
+    height:var(--coverHeight);
+}
+
+.recCol {
+    display:table-cell;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow: "...";
+    box-sizing: border-box;
+    vertical-align: top;
+    font-size:14px;
+    padding:2px;
+}
+
+.flagImage {
+    height:10px;
+    display:inline-block;
+    margin-right:5px;
+    border-radius:2px;
+}
+
+button {
+    color:var(--frontColour);
+    background-color:var(--backColour);
+    font-family: var(--font);
+    padding:3px;
+    box-sizing: border-box;
+    border-radius:5px;
+    border-style:solid;
+    border-color:var(--frontColour);
+    border-width:0px 1px 1px 0px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.recAdd {
+    width:100%;
+    height:100%;
+    color:var(--frontGreenColour);
+    border-color:var(--frontGreenColour);
+    background-color:var(--backGreenColour);
+    cursor:pointer;
+}
+.recNoAdd {
+    width:100%;
+    height:100%;
+    color:var(--frontRedColour);
+    border-color:var(--frontRedColour);
+    background-color:var(--backRedColour);
+}
+
+.recAdd:hover {
+    color:#fff;
+    background-color:var(--backGreenColour2);
+}
+
+.trackLeft {
+    width:var(--coverHeight);
+    height:var(--coverHeight);
+    position:absolute;
+    top:0;
+    left:0;
+}
+.trackRight {
+    width:calc(100% - var(--coverHeight));
+    left:var(--coverHeight);
+    top:0;
+    position:absolute;
+    display:table-row;
+}
+
+.trackCover {
+    width:100%;
+    height:100%;
+    background-image: url('https://i.scdn.co/image/cfc9f1dd47f823270b31610ef61beb39485b723e');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius:10px;
+    display:inline-block;
+}
+
+.trackContainer {
+    width:100%;
+    position:relative;
+    height:var(--coverHeight);
+    margin-bottom:5px;
+}
+
+.innerLeft {
+    width:calc(100% - var(--innerRightWidth));
+    height:100%;
+    display:inline-block;
+    position:absolute;
+    left:0;
+    box-sizing: border-box;
+    padding-left:5px;
+}
+
+.innerRight {
+    width:var(--innerRightWidth);
+    height:100%;
+    display:inline-block;
+    position:absolute;
+    left:calc(100% - var(--innerRightWidth));
+}
+
+.trackInnerCell {
+    width:100%;
+    position:relative;
+}
+
+.trackCol {
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow: "...";
+    box-sizing: border-box;
+    vertical-align: top;
+}
+
+.trackComment {
+    white-space: pre-line;
+    position:relative;
+    width:100%;
+    margin-bottom:10px;
+}

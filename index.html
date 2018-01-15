@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="static/scripts/jquery-3.2.1.min.js" type="text/javascript"></script>
+</head>
+<body>
+
+
+<script>
+    var scopes = 'user-read-private user-read-email';
+    var redirect_uri = 'http://lessthan3.xyz/recommend/';
+    var clientId = 'fddfa38682ac42cca19b448510c16848';
+    $.get({
+        url: 'https://accounts.spotify.com/authorize' +
+        '?response_type=code' +
+        '&client_id=' + clientId +
+            '' +
+        (scopes ? '&scope=' + encodeURIComponent(scopes) : '') +
+        '&redirect_uri=' + encodeURIComponent(redirect_uri),
+        crossOrigin: true,
+        type: 'GET',
+        xhrFields: { withCredentials: true },
+        dataType: 'json',
+        success: function (result) {
+            console.log(result);
+        },
+        error: function (xhr, status) {
+            console.log(xhr);
+            console.log(status);
+        }
+    });
+</script>
+</body>
+</html>

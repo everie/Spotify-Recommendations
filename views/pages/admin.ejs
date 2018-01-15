@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= pageTitle %> • Admin</title>
+    <script src="scripts/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="scripts/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <link href="styles/style.css" rel="stylesheet">
+    <link href="styles/styleAdmin.css" rel="stylesheet">
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="background">
+    <div id="bgLeft"></div>
+    <div id="bgRight"></div>
+</div>
+<div id="container">
+    <div id="containerLeft"></div>
+    <div id="containerRight"></div>
+    <div id="containerMid">
+
+        <div id="pageTitle" class="title">
+            <div id="titleBox">
+                <%= pageTitle %> • Admin
+            </div>
+        </div>
+        <div id="pageContent">
+            <div class="scrollable">
+                <div id="recommendations" class="table">
+                    <!-- Stuff is coming here -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="topBar">
+    <div id="topBarContent">
+        <div id="tbcLeft">
+            Logged in as <a target="_new" href="<%= external_urls.spotify %>"><%= display_name %></a>
+        </div><div id="tbcRight">
+            <a target="_new" href="<%= external_urls.spotify %>">
+                <img class="roundImage profileImage" src="<%= images[0].url %>">
+            </a>
+        </div>
+    </div>
+</div>
+
+<script src="/scripts/js.js"></script>
+<script src="/scripts/jsAdmin.js"></script>
+<script>
+    populateRecommendations(function() {
+        scrollCheck();
+    });
+</script>
+</body>
+</html>

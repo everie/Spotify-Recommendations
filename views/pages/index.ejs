@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= pageTitle %> • Recommendations</title>
+    <script src="scripts/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="scripts/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <link href="styles/style.css" rel="stylesheet">
+</head>
+<body>
+<div id="background">
+    <div id="bgLeft"></div>
+    <div id="bgRight"></div>
+</div>
+<div id="container">
+    <div id="containerLeft"></div>
+    <div id="containerRight"></div>
+    <div id="containerMid">
+
+        <div id="pageTitle" class="title">
+            <div id="titleBox">
+                <%= pageTitle %> • Recommendations
+            </div>
+        </div>
+        <div id="pageContent">
+            <div class="scrollable">
+                <div id="searchBox">
+                    <div>
+                        <div>
+                            Paste link to track <span class="spanLink" onclick="showHelp()">[?]</span> or start typing to search
+                        </div>
+                        <div>
+                            <input id="searchField" name="searchField" placeholder="Insert link, uri or search words...">
+                        </div>
+                    </div>
+                    <div id="searchResults" class="table">
+                        <!-- Stuff is coming here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div id="helper"></div>
+
+<div id="formContainer">
+    <div id="formTrack">
+        <div id="formLeft">
+            <div id="formCover"></div>
+        </div>
+        <div id="formRight">
+            <div id="formName">
+                <span class="formCell title" id="formTitle">What a song! - Original Mix</span>
+                <span class="formCell" id="formDuration">3:24</span>
+            </div>
+            <div class="formCell" id="formArtist">Super Artist, Some Feature</div>
+            <div class="formCell" id="formAlbum">The Album of Our Dreams</div>
+        </div>
+    </div>
+    <div id="formComment">
+        <div>
+            Add a comment to your suggestion (OPTIONAL)
+        </div>
+        <div>
+            <textarea id="commentField" name="commentField" placeholder="Comment..." rows="5"></textarea>
+        </div>
+    </div>
+    <!--
+    <div id="formFeatures">
+        Features goes here...
+    </div>
+    -->
+    <div id="formButtons">
+        <div id="formSubmitContain">
+            <button id="formSubmit">SUBMIT</button>
+        </div><div id="formCancelContain">
+            <button id="formCancel" onclick="hideForm()">CANCEL</button>
+        </div>
+    </div>
+</div>
+
+<div id="topBar">
+    <div id="topBarContent">
+        <div id="tbcLeft">
+            Logged in as <a target="_new" href="<%= external_urls.spotify %>"><%= display_name %></a>
+        </div><div id="tbcRight">
+            <a target="_new" href="<%= external_urls.spotify %>">
+                <img class="roundImage profileImage" src="<%= images[0].url %>">
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    var posterName = '<%= display_name %>';
+    var posterUrl = '<%= external_urls.spotify %>';
+    var posterId = '<%= id %>';
+    var posterCountry = '<%= country %>';
+</script>
+<script src="/scripts/js.js"></script>
+</body>
+</html>

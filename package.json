@@ -1,0 +1,29 @@
+{
+  "name": "playlistrec",
+  "version": "1.0.0",
+  "description": "playlist recommendations",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./app.js"
+  },
+  "keywords": [
+    "spotify",
+    "playlist",
+    "recommendation"
+  ],
+  "author": "HE",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.0",
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "nodemailer": "^4.4.1",
+    "request": "^2.83.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.10"
+  }
+}
