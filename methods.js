@@ -70,10 +70,10 @@ module.exports = {
         res.statusCode = 200;
         res.render(page, obj);
     },
-    hash: function(input) {
+    hash: function(input, hostname) {
         return crypto
             .createHash('sha1')
-            .update(input)
+            .update(input + hostname)
             .digest('base64');
     }
 };

@@ -9,5 +9,6 @@
   "clientSecret": "spotify-client-secret",
   "ownerId": "your-spotify-user-id",
   "stateUser": "String to be hashed for Spotify callback state.",
-  "stateAdmin": "String to be hashed for Spotify callback admin-state."
+  "stateAdmin": "String to be hashed for Spotify callback admin-state.",
+  "cookieSecret": "Cookie secret"
 }

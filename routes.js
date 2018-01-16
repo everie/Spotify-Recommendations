@@ -9,9 +9,6 @@ var db = require(dbFile);
 
 var app = express();
 
-var stateUser = methods.hash(settings.stateUser);
-var stateAdmin = methods.hash(settings.stateAdmin);
-
 app.get('/', function (req, res) {
     if (!req.signedCookies.token) {
         var url = 'https://accounts.spotify.com/authorize' +
@@ -19,7 +16,7 @@ app.get('/', function (req, res) {
             '&client_id=' + settings.clientId +
             '&scope=' + encodeURIComponent(settings.scopeUser) +
             '&redirect_uri=' + encodeURIComponent(settings.callback) +
-            '&state=' + stateUser;
+            '&state=' + methods.hash(settings.stateUser, req.hostname);
 
         res.redirect(url);
     } else {
@@ -71,10 +68,10 @@ app.get('/callback', function (req, res) {
                         signed: true // Indicates if the cookie should be signed
                     };
 
-                    if (state === stateUser) {
+                    if (state === methods.hash(settings.stateUser, req.hostname)) {
                         res.cookie('token', obj.access_token, options);
                         res.redirect('/');
-                    } else if (state === stateAdmin) {
+                    } else if (state === methods.hash(settings.stateAdmin, req.hostname)) {
                         res.cookie('adminToken', obj.access_token, options);
                         res.redirect('/admin');
                     }
@@ -94,7 +91,7 @@ app.get('/admin', function (req, res) {
             '&client_id=' + settings.clientId +
             '&scope=' + encodeURIComponent(settings.scopeAdmin) +
             '&redirect_uri=' + encodeURIComponent(settings.callback) +
-            '&state=' + stateAdmin;
+            '&state=' + methods.hash(settings.stateAdmin, req.hostname);
 
         res.redirect(url);
     } else {
