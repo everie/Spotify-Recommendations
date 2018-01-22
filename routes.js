@@ -290,22 +290,7 @@ app.post('/add', function (req, res) {
 
 app.post('/delete/:index', function (req, res) {
     var index = req.params.index;
-
     var track = db.tracks[index];
-
-    /*
-    var url = 'https://api.spotify.com/v1/users/' +
-        settings.ownerId + '/playlists/' + settings.playlistId +
-        '/tracks?uris=' + uri;
-
-    methods.request(url, 'POST', req.signedCookies.adminToken, function(data) {
-        if (data.error !== null) {
-            methods.sendError(data.error, res);
-        } else {
-            methods.send(data.body, res);
-        }
-    });
-    */
 
     db.tracks.splice(index, 1);
 
