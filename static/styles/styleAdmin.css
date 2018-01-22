@@ -62,14 +62,26 @@ button {
 .recNoAdd {
     width:100%;
     height:100%;
+    color:var(--disabledFrontColour);
+    background-color:var(--disabledBackColour);
+    border-color:var(--disabledFrontColour);
+}
+.recDelete {
+    width:100%;
+    height:100%;
     color:var(--frontRedColour);
     border-color:var(--frontRedColour);
     background-color:var(--backRedColour);
+    cursor:pointer;
 }
 
 .recAdd:hover {
     color:#fff;
     background-color:var(--backGreenColour2);
+}
+.recDelete:hover {
+    color:#fff;
+    background-color:var(--backRedColour2);
 }
 
 .trackLeft {

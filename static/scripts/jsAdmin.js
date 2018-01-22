@@ -36,13 +36,10 @@ function populateRecommendations(callback) {
 
                                     recContainer
                                         .append(recRow(addFlag(flags, t),
-                                            playlist.indexOf(getLastElement(t.uri, ':')) > -1));
+                                            playlist.indexOf(getLastElement(t.uri, ':')) > -1, i));
                                 }
 
                                 $('.recAdd').click(function() {
-
-                                    console.log('hey');
-
                                     $.ajax({
                                         url: '/add',
                                         method: 'POST',
@@ -50,7 +47,17 @@ function populateRecommendations(callback) {
                                             uri: $(this).data('uri')
                                         },
                                         success: function (res) {
-                                            console.log(res);
+                                            populateRecommendations(function() {
+                                                scrollCheck();
+                                            });
+                                        }
+                                    });
+                                });
+                                $('.recDelete').click(function() {
+                                    $.ajax({
+                                        url: '/delete/' + $(this).data('index'),
+                                        method: 'POST',
+                                        success: function (res) {
                                             populateRecommendations(function() {
                                                 scrollCheck();
                                             });
@@ -71,7 +78,7 @@ function populateRecommendations(callback) {
     });
 }
 
-function recRow(track, hasTrack) {
+function recRow(track, hasTrack, index) {
 
     var trackTable = '';
     if (!track.noTrack) {
@@ -110,10 +117,15 @@ function recRow(track, hasTrack) {
         .data('uri', track.uri)
         .addClass(buttonClass);
 
+    var delButton = $('<button></button>')
+        .data('index', index)
+        .addClass('recDelete ion-trash-b');
+
     var divAdd = $('<div></div>')
         .addClass('recCol')
         .css({'width': '10%', 'text-align': 'right'})
-        .append(addButton);
+        .append('<div></div>').append(addButton)
+        .append('<div></div>').append(delButton);
 
     var rowClass = 'recRow';
 
@@ -173,7 +185,6 @@ function makeTrackTable(track) {
         .addClass('innerLeft')
         .append(trackTitle)
         .append(trackArtist);
-        //.append(trackComment);
     var innerRight = $('<div></div>')
         .addClass('innerRight')
         .append(trackDuration)

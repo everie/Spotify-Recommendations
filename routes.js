@@ -167,20 +167,6 @@ app.post('/send', function (req, res) {
             }, res);
         }
     });
-
-    /*
-    db.tracks.unshift(obj);
-
-    fs.writeFile(dbFile, JSON.stringify(db, null, 2), function (err) {
-        if (err !== null) {
-            methods.sendError(err.error, res);
-        } else {
-            methods.send({
-                msg: 'Track is submitted. Thank you for your recommendation!'
-            }, res);
-        }
-    });
-    */
 });
 
 app.get('/list', function (req, res) {
@@ -298,6 +284,38 @@ app.post('/add', function (req, res) {
             methods.sendError(data.error, res);
         } else {
             methods.send(data.body, res);
+        }
+    });
+});
+
+app.post('/delete/:index', function (req, res) {
+    var index = req.params.index;
+
+    var track = db.tracks[index];
+
+    /*
+    var url = 'https://api.spotify.com/v1/users/' +
+        settings.ownerId + '/playlists/' + settings.playlistId +
+        '/tracks?uris=' + uri;
+
+    methods.request(url, 'POST', req.signedCookies.adminToken, function(data) {
+        if (data.error !== null) {
+            methods.sendError(data.error, res);
+        } else {
+            methods.send(data.body, res);
+        }
+    });
+    */
+
+    db.tracks.splice(index, 1);
+
+    fs.writeFile(dbFile, JSON.stringify(db, null, 2), function (err) {
+        if (err !== null) {
+            methods.sendError(err.error, res);
+        } else {
+            methods.send({
+                msg: track.artist + ' - ' + track.name + ' was removed.'
+            }, res);
         }
     });
 });
