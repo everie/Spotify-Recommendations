@@ -11,6 +11,6 @@
   "stateUser": "String to be hashed for Spotify callback state.",
   "stateAdmin": "String to be hashed for Spotify callback admin-state.",
   "cookieSecret": "Cookie secret",
-  "recaptchaSiteKey": "6LeWsEAUAAAAAHRXzh7cPRFztlxdj82WxJEDER9u",
-  "recaptchaSecret": "6LeWsEAUAAAAAHp0zd1lFGJup4TTWt-UE_p-BUWO"
+  "recaptchaSiteKey": "reCaptcha site key.",
+  "recaptchaSecret": "reCaptcha site secret."
 }
