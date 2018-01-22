@@ -1,0 +1,49 @@
+<div id="formContainer">
+    <form id="suggestForm">
+        <div id="formTrack">
+            <div id="formLeft">
+                <div id="formCover"></div>
+            </div>
+            <div id="formRight">
+                <div id="formName">
+                    <span class="formCell title" id="formTitle">What a song! - Original Mix</span>
+                    <span class="formCell" id="formDuration">3:24</span>
+                </div>
+                <div class="formCell" id="formArtist">Super Artist, Some Feature</div>
+                <div class="formCell" id="formAlbum">The Album of Our Dreams</div>
+            </div>
+        </div>
+        <div id="formComment">
+            <div>
+                Add a comment to your suggestion (OPTIONAL)
+            </div>
+            <div>
+                <textarea id="commentField" name="comment" placeholder="Comment..." rows="5"></textarea>
+            </div>
+        </div>
+        <!--
+        <div id="formFeatures">
+            Features goes here...
+        </div>
+        -->
+        <input type="hidden" id="hAlbum" name="album">
+        <input type="hidden" id="hArtist" name="artist">
+        <input type="hidden" id="hCover" name="cover">
+        <input type="hidden" id="hDuration" name="duration">
+        <input type="hidden" id="hName" name="name">
+        <input type="hidden" id="hUri" name="uri">
+        <div class="g-recaptcha"
+             data-sitekey="<%= siteKey %>"
+             data-callback="enableSubmit"
+             data-expired-callback="disableSubmit"
+             data-theme="dark"
+        ></div>
+        <div id="formButtons">
+            <div id="formSubmitContain">
+                <button type="submit" id="formSubmit">SUBMIT</button>
+            </div><div id="formCancelContain">
+                <button id="formCancel" onclick="hideForm()">CANCEL</button>
+            </div>
+        </div>
+    </form>
+</div>

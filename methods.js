@@ -29,14 +29,32 @@ module.exports = {
             header = {
                 'content-type': 'application/x-www-form-urlencoded'
             }
-        } else if (token === null && method === 'POST') {
-            header = {};
         }
 
         request({
             uri: url,
             method: method,
             headers: header
+        }, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                callback({
+                    error: null,
+                    body: body
+                });
+            } else {
+                callback({
+                    error: error,
+                    body: body
+                });
+            }
+        });
+    },
+    captcha: function(data, callback) {
+        request({
+            uri: 'https://www.google.com/recaptcha/api/siteverify' +
+            '?response=' + data.response +
+            '&secret=' + data.secret,
+            method: 'POST'
         }, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 callback({

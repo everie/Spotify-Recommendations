@@ -30,6 +30,7 @@ app.get('/', function (req, res) {
                 var obj = JSON.parse(data.body);
 
                 obj.pageTitle = settings.title;
+                obj.siteKey = settings.recaptchaSiteKey;
                 methods.render('pages/index', obj, res);
             }
         });
@@ -139,8 +140,35 @@ app.post('/search', function (req, res) {
 
 app.post('/send', function (req, res) {
     var obj = req.body;
-
     obj.date = methods.getDateString();
+
+    methods.captcha({
+        secret: settings.recaptchaSecret,
+        response: obj['g-recaptcha-response']
+    }, function(data) {
+        var response = JSON.parse(data.body);
+        if (response.success == true) {
+            delete obj['g-recaptcha-response'];
+
+            db.tracks.unshift(obj);
+
+            fs.writeFile(dbFile, JSON.stringify(db, null, 2), function (err) {
+                if (err !== null) {
+                    methods.sendError(err.error, res);
+                } else {
+                    methods.send({
+                        msg: 'Track is submitted. Thank you for your recommendation!'
+                    }, res);
+                }
+            });
+        } else {
+            methods.send({
+                msg: 'Something went wrong during submission, please try again.'
+            }, res);
+        }
+    });
+
+    /*
     db.tracks.unshift(obj);
 
     fs.writeFile(dbFile, JSON.stringify(db, null, 2), function (err) {
@@ -152,6 +180,7 @@ app.post('/send', function (req, res) {
             }, res);
         }
     });
+    */
 });
 
 app.get('/list', function (req, res) {

@@ -21,6 +21,9 @@
     --backGreenColour2:#044;
     --backRedColour2:#403;
 
+    --disabledFrontColour:#999;
+    --disabledBackColour:#222;
+
     --font:Arial;
 }
 
@@ -387,6 +390,12 @@ button {
     color:#fff;
     background-color:var(--backGreenColour2);
 }
+#formSubmit:disabled {
+    color:var(--disabledFrontColour);
+    background-color:var(--disabledBackColour);
+    border-color:var(--disabledFrontColour);
+}
+
 #formCancel:hover {
     color:#fff;
     background-color:var(--backRedColour2);
@@ -398,4 +407,8 @@ button {
 #formCancelContain {
     display:inline-block;
     width:30%;
+}
+
+.g-recaptcha {
+    margin-bottom:15px;
 }

@@ -5,6 +5,7 @@
     <title><%= pageTitle %> • Recommendations</title>
     <script src="scripts/jquery-3.2.1.min.js" type="text/javascript"></script>
     <script src="scripts/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <link href="styles/style.css" rel="stylesheet">
 </head>
 <body>
@@ -44,41 +45,7 @@
 </div>
 <div id="helper"></div>
 
-<div id="formContainer">
-    <div id="formTrack">
-        <div id="formLeft">
-            <div id="formCover"></div>
-        </div>
-        <div id="formRight">
-            <div id="formName">
-                <span class="formCell title" id="formTitle">What a song! - Original Mix</span>
-                <span class="formCell" id="formDuration">3:24</span>
-            </div>
-            <div class="formCell" id="formArtist">Super Artist, Some Feature</div>
-            <div class="formCell" id="formAlbum">The Album of Our Dreams</div>
-        </div>
-    </div>
-    <div id="formComment">
-        <div>
-            Add a comment to your suggestion (OPTIONAL)
-        </div>
-        <div>
-            <textarea id="commentField" name="commentField" placeholder="Comment..." rows="5"></textarea>
-        </div>
-    </div>
-    <!--
-    <div id="formFeatures">
-        Features goes here...
-    </div>
-    -->
-    <div id="formButtons">
-        <div id="formSubmitContain">
-            <button id="formSubmit">SUBMIT</button>
-        </div><div id="formCancelContain">
-            <button id="formCancel" onclick="hideForm()">CANCEL</button>
-        </div>
-    </div>
-</div>
+<%- include('../partials/suggestForm', {siteKey: siteKey}); %>
 
 <div id="topBar">
     <div id="topBarContent">

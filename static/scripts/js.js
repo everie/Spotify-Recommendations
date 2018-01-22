@@ -227,6 +227,7 @@ function headerObject() {
 }
 
 function showForm(track) {
+    $('#formSubmit').prop('disabled', true);
     $('#formTitle').text(track.name);
     $('#formDuration').text(track.duration);
     $('#formCover').css('background-image', 'url(' + track.cover + ')');
@@ -243,12 +244,26 @@ function showForm(track) {
             top: '0px'
         }, 500);
 
-    $('#formSubmit').click(function() {
-        track.comment = $('#commentField').val();
-        submitForm(track);
-        hideForm();
-    });
+    $('#hAlbum').val(track.album);
+    $('#hArtist').val(track.artist);
+    $('#hCover').val(track.cover);
+    $('#hDuration').val(track.duration);
+    $('#hName').val(track.name);
+    $('#hUri').val(track.uri);
 }
+
+$('#suggestForm').submit(function(e) {
+    e.preventDefault();
+    var obj = {};
+
+    var arr = $(this).serializeArray();
+    for (var i = 0; i < arr.length; i++) {
+        obj[arr[i].name] = arr[i].value;
+    }
+
+    submitForm(obj);
+    hideForm();
+});
 
 function hideForm() {
     var field = $('#searchField');
@@ -263,8 +278,15 @@ function hideForm() {
         }, 500, function() {
             $(this).hide();
             $('#commentField').val('');
-            $('#formSubmit').off();
+            //$('#formSubmit').off();
         });
+}
+
+function enableSubmit() {
+    $('#formSubmit').prop('disabled', false);
+}
+function disableSubmit() {
+    $('#formSubmit').prop('disabled', true);
 }
 
 function submitForm(data) {
