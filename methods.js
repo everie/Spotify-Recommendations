@@ -90,8 +90,8 @@ module.exports = {
     },
     hash: function(input, hostname) {
         return crypto
-            .createHash('sha1')
+            .createHash('md5')
             .update(input + hostname)
-            .digest('base64');
+            .digest('hex');
     }
 };
