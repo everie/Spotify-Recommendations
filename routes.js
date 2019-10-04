@@ -2,6 +2,7 @@ var express = require('express');
 var fs = require('fs');
 var settings = require('./settings');
 var methods = require('./methods');
+var mail = require('./mail');
 var async = require('async');
 
 var dbFile = './db/db.json';
@@ -152,10 +153,12 @@ app.post('/send', function (req, res) {
 
             db.tracks.unshift(obj);
 
-            fs.writeFile(dbFile, JSON.stringify(db, null, 2), function (err) {
+            fs.writeFile(dbFile, JSON.stringify(db, null, 2), async function (err) {
                 if (err !== null) {
                     methods.sendError(err.error, res);
                 } else {
+                    await mail.trySendEmail();
+
                     methods.send({
                         msg: 'Track is submitted. Thank you for your recommendation!'
                     }, res);
