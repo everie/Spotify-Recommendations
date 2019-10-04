@@ -157,7 +157,7 @@ app.post('/send', function (req, res) {
                 if (err !== null) {
                     methods.sendError(err.error, res);
                 } else {
-					await mail.trySendEmail();
+                    await mail.trySendEmail();
 
                     methods.send({
                         msg: 'Track is submitted. Thank you for your recommendation!'
