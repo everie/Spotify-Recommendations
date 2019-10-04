@@ -67,6 +67,38 @@ With a bit of knowledge of javascript and css it should be fairly easy to custom
 
     The secret as provided by the reCAPTCHA dashboard.
 
+    #### useSmtp
+
+    Set this to true if you want to use SMTP for sending an email whenever a new track is submitted. If set to `false`, all other SMTP settings will be ignored.
+
+    #### smtpPort
+
+    The port to use for connecting to the SMTP server. This will usually be 465 if SSL is used.
+
+    #### smtpHost
+
+    The host to use for connecting to the server, for example `smtp.gmail.com` to use GMail's SMTP servers.
+
+    #### smtpSecure
+
+    Whether or not to use secure connection for the SMTP communication.
+
+    #### smtpUser
+
+    The username to use when authenticating with the SMTP server. In most cases, this will be your e-mail address.
+
+    #### smtpPassword
+
+    The password to use when authenticating with the SMTP server.
+
+    #### smtpFrom
+
+    The sender address to use for the emails sent. This does not have to be a valid e-mail address.
+
+    #### smtpTo
+
+    The e-mail address which will receive the emails. Probably your own e-mail address in most cases.
+
 5. Copy or rename the file `db/db.json-mock` to `db/db.json`.
 
 6. Launch the app using the `rec.sh` script.

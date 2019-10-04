@@ -12,5 +12,13 @@
   "stateAdmin": "String to be hashed for Spotify callback admin-state.",
   "cookieSecret": "Cookie secret",
   "recaptchaSiteKey": "reCaptcha site key.",
-  "recaptchaSecret": "reCaptcha site secret."
+  "recaptchaSecret": "reCaptcha site secret.",
+  "useSmtp": false,
+  "smtpPort": 465,
+  "smtpHost": "SMTP server address",
+  "smtpSecure": true,
+  "smtpUser": "SMTP username",
+  "smtpPassword": "SMTP password",
+  "smtpFrom": "Address to use as the sender address for the generated emails",
+  "smtpTo": "Receiver to use for the generated emails"
 }
